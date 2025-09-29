@@ -10,6 +10,15 @@ server_socket.bind(('', server_port))
 server_socket.listen(1)
 print('The server is ready to receive')
 
+"""
+-----------
+CHEAT SHEET
+-----------
+Add:       {"method": "add", "number_one": 33, "number_two": 11}
+Subtract:  {"method": "subtract", "number_one": 33, "number_two": 11}
+Random:    {"method": "random", "number_one": 1, "number_two": 100}
+"""
+
 def simple_math(connection_socket : socket):
     # connection_socket.send(f"Write 'exit' to end connection\n".encode())
     # connection_socket.send(f"Write 'random' to get a random number between two integers of your input.\n - The smaller number MUST be written first.\n".encode())
@@ -42,7 +51,7 @@ def simple_math(connection_socket : socket):
         # make result output like a json string.
         # suggestion: use a dictionary and json.dumps
         
-        connection_socket.send(f"{json.dumps(result)}\n".encode())
+        connection_socket.send(json.dumps(result).encode())
 
 # three-way handshake
 while True:
