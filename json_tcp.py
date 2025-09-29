@@ -39,6 +39,7 @@ def simple_math(connection_socket : socket):
         
         if message["method"] == 'stop' or message["method"] == 'quit' or message["method"] == 'exit':
             connection_socket.send(f'Terminating service.\n'.encode())
+            connection_socket.close()            
             break
         print(f'Received message: {message}\n'.encode())
         
