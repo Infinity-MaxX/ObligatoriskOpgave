@@ -18,7 +18,7 @@ def simple_math(connection_socket : socket):
     connection_socket.send(f"\n".encode())
     
     while True:
-        connection_socket.send(f"Please enter a command written as a json string.\n".encode())
+        connection_socket.send(f'Please enter a command written as a json string.\n'.encode())
         connection_socket.send('The format should be: {"method": "<command>", "number_one": <int>, "number_two": <int>}\n'.encode())
         message = json.loads(connection_socket.recv(1024).decode().strip())
         
@@ -39,7 +39,10 @@ def simple_math(connection_socket : socket):
         if message["method"] == 'subtract':
             result = number_one - number_two
             
-        connection_socket.send(f"{result}\n".encode())
+        # make result output like a json string.
+        # suggestion: use a dictionary and json.dumps
+        
+        connection_socket.send(f"{json.dumps(result)}\n".encode())
 
 # three-way handshake
 while True:
