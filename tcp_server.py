@@ -10,11 +10,11 @@ server_socket.listen(1)
 print('The server is ready to receive')
 
 def simple_math(connection_socket : socket):
-    connection_socket.send(f"Write 'exit' to end connection\n".encode())
-    connection_socket.send(f"Write 'random' to get a random number between two integers of your input.\n - The smaller number MUST be written first.\n".encode())
-    connection_socket.send(f"Write 'add' to get the sum of two integers of your input.\n".encode())
-    connection_socket.send(f"Write 'subtract' to get the difference between two integers of your input.\n - The second number will be subtracted from the first.\n".encode())
-    connection_socket.send(f"\n".encode())
+    # connection_socket.send(f"Write 'exit' to end connection\n".encode())
+    # connection_socket.send(f"Write 'random' to get a random number between two integers of your input.\n - The smaller number MUST be written first.\n".encode())
+    # connection_socket.send(f"Write 'add' to get the sum of two integers of your input.\n".encode())
+    # connection_socket.send(f"Write 'subtract' to get the difference between two integers of your input.\n - The second number will be subtracted from the first.\n".encode())
+    # connection_socket.send(f"\n".encode())
     
     while True:
         connection_socket.send(f'Please enter a command.\n'.encode())

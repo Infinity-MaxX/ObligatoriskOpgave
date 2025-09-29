@@ -7,10 +7,6 @@ while True:
     clientSocket.send(request.encode())
     response = clientSocket.recv(1024).decode()
     
-    request = input('Enter numbers: ')
-    clientSocket.send(request.encode())
-    response = clientSocket.recv(1024).decode()
-    
     print(f'Response from server: {response}')
 
     if request.lower() == 'exit':
