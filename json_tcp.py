@@ -31,8 +31,10 @@ def simple_math(connection_socket : socket):
     """
     
     while True:
-        # connection_socket.send(f'Please enter a command written as a json string.\n'.encode())
-        # connection_socket.send('The format should be: {"method": "<command>", "number_one": <int>, "number_two": <int>}\n'.encode())
+        """
+        connection_socket.send(f'Please enter a command written as a json string.\n'.encode())
+        connection_socket.send('The format should be: {"method": "<command>", "number_one": <int>, "number_two": <int>}\n'.encode())
+        """
         message = json.loads(connection_socket.recv(1024).decode().strip())
         
         if message["method"] == 'stop' or message["method"] == 'quit' or message["method"] == 'exit':
@@ -52,8 +54,6 @@ def simple_math(connection_socket : socket):
         if message["method"] == 'subtract':
             result = number_one - number_two
             
-        # make result output like a json string.
-        # suggestion: use a dictionary and json.dumps
         result_dict = {"result": result}
         connection_socket.send(json.dumps(result_dict).encode())
 
@@ -61,6 +61,4 @@ def simple_math(connection_socket : socket):
 while True:
     connection_socket, addr = server_socket.accept()
     print(f'Connection established with {addr}')
-    # longer_dialogue(connection_socket)
-    # threading is for concurrent connections
     threading.Thread(target=simple_math, args=(connection_socket,)).start()
